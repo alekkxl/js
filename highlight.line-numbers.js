@@ -31,7 +31,7 @@
     }
 
     function documentReady() {
-        var elements = d.querySelectorAll('pre code|code');
+        var elements = d.querySelectorAll('pre code,code');
         for (var i = 0; i < elements.length; i++) {
             if (elements[i].className.indexOf('hljsln') == -1) {
                 var html = elements[i].innerHTML;
