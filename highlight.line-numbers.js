@@ -16,11 +16,11 @@
 
     function addLineNumbersForCode(html) {
         var text = html.replace(/<span[^>]*>|<\/span>/g, '');
-        if (/\r|\n$/.test(text)) {
+        if (/\r|\n|<br>$/.test(text)) {
             html += '<span class="ln-eof"></span>';
         }
         var num = 1;
-        html = html.replace(/\r\n|\r|\n/g, function (a) {
+        html = html.replace(/\r\n|\r|\n|<br>/g, function (a) {
             num++;
             var numStr = ('  ' + num).substr(-3);
             return a + '<span class="ln-num" data-num="' + numStr + '"></span>';
@@ -31,7 +31,7 @@
     }
 
     function documentReady() {
-        var elements = d.querySelectorAll('pre,code');
+        var elements = d.querySelectorAll('pre code');
         for (var i = 0; i < elements.length; i++) {
             if (elements[i].className.indexOf('hljsln') == -1) {
                 var html = elements[i].innerHTML;
